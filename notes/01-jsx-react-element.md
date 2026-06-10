@@ -77,4 +77,4 @@ React가 나중에 DOM을 만들 수 있도록 `type: "h1"`과 `props.children`�
 React Element의 실제 콘솔 출력 형태를 보고 `type`, `props`, `key`를 확인한다.
 
 ## 오늘의 한 줄
-<App />은 App() 직접 호출이 아니라, type이 App인 React Element 값을 만드는 코드다.
+`<App />`은 App() 직접 호출이 아니라, type이 App인 React Element 값을 만드는 코드다.

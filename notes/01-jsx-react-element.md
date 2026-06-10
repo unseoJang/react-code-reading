@@ -52,6 +52,22 @@ const element = {
 
 `App` 함수 본문은 React가 `createRoot(...).render(<App />)` 이후 렌더링 과정에서 실행한다.
 
+## 내가 이해한 것
+
+JSX는 태그를 바로 DOM으로 만들어주는 코드가 아니다.
+
+`<h1>Hello</h1>`은 실제 `document.createElement("h1")`을 바로 실행하는 것이 아니라,
+React가 나중에 DOM을 만들 수 있도록 `type: "h1"`과 `props.children`을 가진 React Element 값을 만든다.
+
+`<App />`도 `App()`을 바로 실행하는 것이 아니라,
+`type: App`인 React Element 값을 만든다.
+
+즉, JSX는 “실제 DOM 생성”이 아니라 “React에게 넘길 설명 객체 생성”에 가깝다.
+
+-> JSX = DOM 생성 코드가 아니라 React Element 설명서 생성 코드
+
+## 다음 의문점
+
 - React Element 객체는 정확히 어떤 필드를 가지고 있는가?
 - JSX는 Vite에서 정확히 어떤 코드로 변환되는가?
 - `createRoot(...).render(<App />)`는 내부에서 어떤 순서로 실행되는가?

@@ -2,7 +2,7 @@
 
 ## 오늘의 질문
 
-- `<App />`은 DOM일까?
+- <App />은 DOM일까?
 - App 함수를 바로 실행하는 걸까?
 - 아니면 React가 나중에 처리할 설명 객체일까?
 - `<App />`은 `App()`을 바로 실행하는가?
@@ -78,3 +78,84 @@ React Element의 실제 콘솔 출력 형태를 보고 `type`, `props`, `key`를
 
 ## 오늘의 한 줄
 `<App />`은 App() 직접 호출이 아니라, type이 App인 React Element 값을 만드는 코드다.
+
+
+---
+## Day 2. React Element 실제 모양 관찰
+
+## 오늘의 질문
+React Element 객체에는 어떤 정보가 들어갈까?
+
+## 실험 코드
+```tsx
+function App() {
+  console.log("3. App 함수 실행");
+
+  return <h1>Hello React</h1>;
+}
+
+const h1Element = <h1 className="title">Hello React</h1>;
+const appElement = <App />;
+
+console.log("1. h1Element:", h1Element);
+console.log("2. appElement:", appElement);
+
+export default App;
+```
+
+
+## 관찰한 것
+
+### `h1Element`
+
+```txt
+  type:"h1"
+  props: {
+    children : "Hello React"
+    className : "title"
+  }
+  key: null
+  ref: null
+```
+
+### `appElement`
+
+```txt
+type: App 함수, function App () {...}
+props: {}
+key: null
+ref: null
+```
+
+## 내가 이해한 것
+
+`<h1 className="title">Hello React</h1>`은 실제 DOM을 바로 만드는 것이 아니라,
+`type`이 `"h1"`인 React Element 값을 만든다.
+
+`className`은 `props.className`에 들어간다.
+
+`Hello React`는 `props.children`에 들어간다.
+
+`<App />`은 `App()`을 바로 실행하는 것이 아니라,
+`type`이 `App` 함수인 React Element 값을 만든다.
+
+즉, React Element는 대략 이런 설명서 역할을 한다.
+
+```ts
+{
+  type: "무엇을 만들지",
+  props: "어떤 속성과 자식을 줄지",
+  key: "리스트 비교용 식별자",
+  ref: "DOM이나 컴포넌트 참조용 값"
+}
+```
+
+## 아직 모르는 것
+
+- `key`는 왜 `props` 안에 들어가지 않는가?
+- `ref`는 왜 특별 취급되는가?
+- React는 이 element를 받아서 언제 실제 DOM을 만드는가?
+
+## 다음에 볼 것 1개
+
+`createRoot(document.getElementById("root")).render(<App />)`에서 `render`가 이 React Element를 어떻게 받는지 본다.

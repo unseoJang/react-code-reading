@@ -1,0 +1,15 @@
+{
+  "javascript.validate.enable": false,
+  "[javascript]": {
+    "js/ts.validate.enabled": false
+  },
+  "[javascriptreact]": {
+    "js/ts.validate.enabled": false
+  },
+  "typescript.tsdk": "",
+  "js/ts.tsdk.path": "",
+  "tslint.jsEnable": false,
+  "todo-tree.ripgrep.ripgrep": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg",
+  "editor.formatOnSave": false,
+  "workbench.editor.enablePreview": false
+}
